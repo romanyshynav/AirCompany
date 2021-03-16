@@ -26,7 +26,7 @@ public class AirPlaneService {
     public AirPlaneResponce changeAirCompany(Integer id, Integer companyId) {
         AirPlane airPlane = findAirPlaneById(id);
 //        airPlane.setAirCompanyId(companyId);
-        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(companyId).getId());
+        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(companyId));
 
         airPlaneRepository.save(airPlane);
         return new AirPlaneResponce(airPlane);
@@ -39,7 +39,7 @@ public class AirPlaneService {
         airPlane.setName(request.getName());
         airPlane.setFactorySerialNumber(request.getFactorySerialNumber());
 //        airPlane.setAirCompanyId(request.getAirCompanyId());
-        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()).getId());
+        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()));
         airPlane.setNumberOfFlights(request.getNumberOfFlights());
         airPlane.setFlightDistance(request.getFlightDistance());
         airPlane.setFuelCapacity(request.getFuelCapacity());

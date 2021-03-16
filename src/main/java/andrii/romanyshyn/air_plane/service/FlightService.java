@@ -41,9 +41,9 @@ public class FlightService {
         Flight flight = new Flight();
         flight.setFlightStatus(FlightStatus.valueOf(request.getFlightStatus()));
 //        flight.setAirCompanyId(request.getAirCompanyId());
-        flight.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()).getId());
+        flight.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()));
 //        flight.setAirplaneId(request.getAirplaneId());
-        flight.setAirplaneId(airPlaneService.findAirPlaneById(request.getAirplaneId()).getId());
+        flight.setAirplaneId(airPlaneService.findAirPlaneById(request.getAirplaneId()));
         flight.setDepartureCountry(request.getDepartureCountry());
         flight.setDestinationCountry(request.getDepartureCountry());
         flight.setDistance(request.getDistance());

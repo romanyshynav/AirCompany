@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
+    // Не працює з FlyWay
 //    @Query("from Flight f join f.airCompanyId c where f.flightStatus = :flightStatus and c.name = :companyName")
 //    List<Flight> findAirCompanyFlightsByCompanyNameAndStatus(@Param("flightStatus") FlightStatus flightStatus,
 //                                                             @Param("companyName") String companyName);
@@ -20,6 +21,5 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     @Query("from Flight f where f.flightStatus = :flightStatus")
     List<Flight> findFlightByActiveStatusMoreThan24Hours(@Param("flightStatus") FlightStatus flightStatus);
-
 
 }
