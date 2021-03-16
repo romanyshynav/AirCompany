@@ -13,10 +13,10 @@ public class Flight {
     private Integer id;
     @Enumerated(EnumType.STRING)
     private FlightStatus flightStatus;
-    @ManyToOne
-    private AirCompany airCompanyId;
-    @ManyToOne
-    private AirPlane airplaneId;
+//    @ManyToOne
+    private Integer airCompanyId;
+//    @ManyToOne
+    private Integer airplaneId;
     private String departureCountry;
     private String destinationCountry;
     private Integer distance;

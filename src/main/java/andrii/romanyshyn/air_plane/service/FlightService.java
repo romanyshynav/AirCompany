@@ -25,7 +25,7 @@ public class FlightService {
     //    =========МЕТОДИ===============================================================================================
 
     public List<FlightResponce> findAirCompanyFlightsByCompanyNameAndStatus(FlightStatus flightStatus, String companyName) {
-        return flightRepository.findAirCompanyFlightsByCompanyNameAndStatus(flightStatus, companyName).stream()
+        return flightRepository.findAirCompanyFlightsByCompanyNameAndStatus(flightStatus.name(), companyName).stream()
                 .map(flight -> new FlightResponce(flight))
                 .collect(Collectors.toList());
     }
@@ -40,8 +40,10 @@ public class FlightService {
     public FlightResponce create(FlightRequest request) {
         Flight flight = new Flight();
         flight.setFlightStatus(FlightStatus.valueOf(request.getFlightStatus()));
-        flight.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()));
-        flight.setAirplaneId(airPlaneService.findAirPlaneById(request.getAirplaneId()));
+//        flight.setAirCompanyId(request.getAirCompanyId());
+        flight.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()).getId());
+//        flight.setAirplaneId(request.getAirplaneId());
+        flight.setAirplaneId(airPlaneService.findAirPlaneById(request.getAirplaneId()).getId());
         flight.setDepartureCountry(request.getDepartureCountry());
         flight.setDestinationCountry(request.getDepartureCountry());
         flight.setDistance(request.getDistance());

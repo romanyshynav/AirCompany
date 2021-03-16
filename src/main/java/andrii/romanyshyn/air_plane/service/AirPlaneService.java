@@ -25,8 +25,8 @@ public class AirPlaneService {
 
     public AirPlaneResponce changeAirCompany(Integer id, Integer companyId) {
         AirPlane airPlane = findAirPlaneById(id);
-//        airPlane.setAirCompanyId(request.getAirCompanyId());
-        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(companyId));
+//        airPlane.setAirCompanyId(companyId);
+        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(companyId).getId());
 
         airPlaneRepository.save(airPlane);
         return new AirPlaneResponce(airPlane);
@@ -39,7 +39,7 @@ public class AirPlaneService {
         airPlane.setName(request.getName());
         airPlane.setFactorySerialNumber(request.getFactorySerialNumber());
 //        airPlane.setAirCompanyId(request.getAirCompanyId());
-        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()));
+        airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()).getId());
         airPlane.setNumberOfFlights(request.getNumberOfFlights());
         airPlane.setFlightDistance(request.getFlightDistance());
         airPlane.setFuelCapacity(request.getFuelCapacity());
@@ -59,6 +59,6 @@ public class AirPlaneService {
 
     public AirPlane findAirPlaneById(Integer id) {
         return airPlaneRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
-                String.format(ENTITY_ID_NOT_EXIST, AirCompany.class.getSimpleName(), id)));
+                String.format(ENTITY_ID_NOT_EXIST, AirPlane.class.getSimpleName(), id)));
     }
 }

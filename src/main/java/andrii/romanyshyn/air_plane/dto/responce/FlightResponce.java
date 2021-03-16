@@ -34,12 +34,16 @@ public class FlightResponce {
         this.createdAt = flight.getCreatedAt();
 
         //    Додаткові поля з БД
-        if (flight.getAirCompanyId() != null) {
-            this.airCompanyId = flight.getAirCompanyId().getId();
-        }
-        if (flight.getAirplaneId() != null) {
-            this.airplaneId = flight.getAirplaneId().getId();
-        }
+//        if (flight.getAirCompanyId() != null) {
+//            this.airCompanyId = flight.getAirCompanyId().getId();
+//        }
+//        if (flight.getAirplaneId() != null) {
+//            this.airplaneId = flight.getAirplaneId().getId();
+//        }
+
+        this.airCompanyId = flight.getAirCompanyId();
+        this.airplaneId = flight.getAirplaneId();
+
 
     }
 }

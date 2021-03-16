@@ -1,6 +1,7 @@
 package andrii.romanyshyn.air_plane.entity;
 
 import lombok.Data;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,10 +18,10 @@ public class AirCompany {
     private String type;
     private LocalDate founded;
 
-    @OneToMany(mappedBy = "airCompanyId")
-    private List<AirPlane> airPlaneList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
-    @OneToMany(mappedBy = "airCompanyId")
-    private List<Flight> flightCompanyList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
+//    @OneToMany(mappedBy = "airCompanyId")
+//    private List<AirPlane> airPlaneList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
+//    @OneToMany(mappedBy = "airCompanyId")
+//    private List<Flight> flightCompanyList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
 
 
 }

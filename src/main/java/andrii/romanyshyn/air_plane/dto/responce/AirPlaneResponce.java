@@ -20,7 +20,7 @@ public class AirPlaneResponce {
 
     //    Додаткові поля з БД
     private Integer airCompanyId; // передається не обєкт, а айдішка для обєкта (ManyToOne)
-    private List<Integer> flightIdPlaneList; // не ліст обєктів, а ліст айдішок для обєкта (OneToMany)
+//    private List<Integer> flightIdPlaneList; // не ліст обєктів, а ліст айдішок для обєкта (OneToMany)
 
     public AirPlaneResponce(AirPlane airPlane) {
         this.id = airPlane.getId();
@@ -33,14 +33,18 @@ public class AirPlaneResponce {
         this.createdAt = airPlane.getCreatedAt();
 
         //    Додаткові поля з БД
-        if (airPlane.getAirCompanyId() != null) {
-            this.airCompanyId = airPlane.getAirCompanyId().getId();
-        }
-        if (airPlane.getFlightPlaneList() != null && !airPlane.getFlightPlaneList().isEmpty()) {
-            this.flightIdPlaneList = airPlane.getFlightPlaneList().stream()
-                    .map(flight -> flight.getId()) // приводимо до ліста айдішок обєкта
-                    .collect(Collectors.toList());
-        }
+//        if (airPlane.getAirCompanyId() != null) {
+//            this.airCompanyId = airPlane.getAirCompanyId().getId();
+//        }
+//        if (airPlane.getFlightPlaneList() != null && !airPlane.getFlightPlaneList().isEmpty()) {
+//            this.flightIdPlaneList = airPlane.getFlightPlaneList().stream()
+//                    .map(flight -> flight.getId()) // приводимо до ліста айдішок обєкта
+//                    .collect(Collectors.toList());
+//        }
+
+        this.airCompanyId = airPlane.getAirCompanyId();
+
+
     }
 
 }

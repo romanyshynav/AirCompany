@@ -59,6 +59,4 @@ public class AirCompanyService {
                 String.format(ENTITY_ID_NOT_EXIST, AirCompany.class.getSimpleName(), id)));
     }
 
-
-
 }
