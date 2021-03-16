@@ -1,0 +1,65 @@
+airCompany:
+
+     JSON-create
+     http://localhost:8080/airCompany
+    {
+        "name": "Added name",
+        "type": "Added type",
+        "founded": "2021-02-19"
+    }
+
+     JSON-update
+     http://localhost:8080/airCompany/1
+     {
+      "name": "Updated name",
+      "type": "Updated type",
+      "founded": "2000-01-01"
+     }
+
+     JSON-delete
+     http://localhost:8080/airCompany/1
+
+airPlane:
+
+     JSON-create
+     http://localhost:8080/airPlane
+    {
+        "name": "Added name",
+        "factorySerialNumber": "Added factorySerialNumber",
+        "airCompanyId": 1,
+        "numberOfFlights": 1,
+        "flightDistance": 1,
+        "fuelCapacity": 1,
+        "type": "Added type",
+        "createdAt": "2021-02-19"
+    }
+
+     JSON-update-changeAirCompany
+     http://localhost:8080/airPlane/1/2
+
+     JSON-delete
+
+flight:
+
+     JSON-create
+     http://localhost:8080/flight
+    {
+        "flightStatus": "ACTIVE",
+        "airCompanyId": 1,
+        "airplaneId": 1,
+        "departureCountry": "Added departureCountry",
+        "destinationCountry": "Added destinationCountry",
+        "distance": 1,
+        "estimatedFlightTime": 1,
+        "endedAt": "2021-02-19",
+        "delayStartedAt": "2021-02-19",
+        "createdAt": "2021-02-19"
+    }
+
+    JSON-find by "Status and CompanyName"
+    http://localhost:8080/flight/findTask3?statusString=ACTIVE&companyName=xxx
+    JSON-find by "Active more 24h"
+    http://localhost:8080/flight/findTask4
+
+
+
