@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/airCompany")
+@RequestMapping("/airCompanies")
 public class AirCompanyController {
     private final AirCompanyService airCompanyService;
 
@@ -36,7 +36,6 @@ public class AirCompanyController {
 
     @GetMapping
     public List<AirCompanyResponce> findAll() {
-//        return airCompanyService.findAll1();
-        return airCompanyService.findAll2();
+        return airCompanyService.findAll();
     }
 }

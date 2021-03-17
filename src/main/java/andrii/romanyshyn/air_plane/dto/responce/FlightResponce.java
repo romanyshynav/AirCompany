@@ -12,12 +12,11 @@ public class FlightResponce {
     private String departureCountry;
     private String destinationCountry;
     private Integer distance;
-    private Integer estimatedFlightTime; // тип даних
+    private Integer estimatedFlightTime;
     private LocalDate endedAt;
     private LocalDate delayStartedAt;
     private LocalDate createdAt;
 
-    //    Додаткові поля з БД
     private Integer airCompanyId;
     private Integer airplaneId;
 
@@ -33,7 +32,6 @@ public class FlightResponce {
         this.delayStartedAt = flight.getDelayStartedAt();
         this.createdAt = flight.getCreatedAt();
 
-        //    Додаткові поля з БД
         if (flight.getAirCompanyId() != null) {
             this.airCompanyId = flight.getAirCompanyId().getId();
         }

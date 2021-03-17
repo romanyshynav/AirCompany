@@ -18,8 +18,8 @@ public class AirCompany {
     private LocalDate founded;
 
     @OneToMany(mappedBy = "airCompanyId")
-    private List<AirPlane> airPlaneList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
+    private List<AirPlane> airPlaneList = new ArrayList<>();
     @OneToMany(mappedBy = "airCompanyId")
-    private List<Flight> flightCompanyList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
+    private List<Flight> flightCompanyList = new ArrayList<>();
 
 }

@@ -20,7 +20,7 @@ public class Flight {
     private String departureCountry;
     private String destinationCountry;
     private Integer distance;
-    private Integer estimatedFlightTime; // тип даних
+    private Integer estimatedFlightTime;
     private LocalDate endedAt;
     private LocalDate delayStartedAt;
     private LocalDate createdAt;

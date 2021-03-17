@@ -1,15 +1,14 @@
 airCompany:
 
      JSON-create
-     http://localhost:8080/airCompany
+     http://localhost:8080/airCompanies
     {
         "name": "Added name",
-        "type": "Added type",
-        "founded": "2021-02-19"
+        "type": "Added type"
     }
 
      JSON-update
-     http://localhost:8080/airCompany/1
+     http://localhost:8080/airCompanies/1
      {
       "name": "Updated name",
       "type": "Updated type",
@@ -17,12 +16,12 @@ airCompany:
      }
 
      JSON-delete
-     http://localhost:8080/airCompany/1
+     http://localhost:8080/airCompanies/1
 
 airPlane:
 
      JSON-create
-     http://localhost:8080/airPlane
+     http://localhost:8080/airPlanes
     {
         "name": "Added name",
         "factorySerialNumber": "Added factorySerialNumber",
@@ -30,36 +29,33 @@ airPlane:
         "numberOfFlights": 1,
         "flightDistance": 1,
         "fuelCapacity": 1,
-        "type": "Added type",
-        "createdAt": "2021-02-19"
+        "type": "Added type"
     }
 
      JSON-update-changeAirCompany
-     http://localhost:8080/airPlane/1/2
-
-     JSON-delete
+     http://localhost:8080/airPlanes/1/2
 
 flight:
 
      JSON-create
-     http://localhost:8080/flight
+     http://localhost:8080/flights
     {
-        "flightStatus": "ACTIVE",
         "airCompanyId": 1,
         "airplaneId": 1,
         "departureCountry": "Added departureCountry",
         "destinationCountry": "Added destinationCountry",
         "distance": 1,
-        "estimatedFlightTime": 1,
-        "endedAt": "2021-02-19",
-        "delayStartedAt": "2021-02-19",
-        "createdAt": "2021-02-19"
+        "estimatedFlightTime": 1
     }
 
+    JSON-update "Change Status"
+    http://localhost:8080/flights/21/DELAYED
+
     JSON-find by "Status and CompanyName"
-    http://localhost:8080/flight/findTask3?statusString=ACTIVE&companyName=xxx
+    http://localhost:8080/flights/findTask3?statusString=ACTIVE&companyName=Air%20Company%20-%201
+
     JSON-find by "Active more 24h"
-    http://localhost:8080/flight/findTask4
+    http://localhost:8080/flights/findTask4
 
 
 

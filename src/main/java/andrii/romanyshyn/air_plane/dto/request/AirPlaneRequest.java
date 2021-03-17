@@ -13,5 +13,4 @@ public class AirPlaneRequest {
     private Integer flightDistance;
     private Integer fuelCapacity;
     private String type;
-    private LocalDate createdAt;
 }

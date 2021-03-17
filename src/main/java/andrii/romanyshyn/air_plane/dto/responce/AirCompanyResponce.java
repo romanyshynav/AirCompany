@@ -1,6 +1,8 @@
 package andrii.romanyshyn.air_plane.dto.responce;
 
 import andrii.romanyshyn.air_plane.entity.AirCompany;
+import andrii.romanyshyn.air_plane.entity.AirPlane;
+import andrii.romanyshyn.air_plane.entity.Flight;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,9 +16,8 @@ public class AirCompanyResponce {
     private String type;
     private LocalDate founded;
 
-    //    Додаткові поля для читання не з БД
-    private List<Integer> airPlaneIdList; // не ліст обєктів, а ліст айдішок для обєкта (OneToMany)
-    private List<Integer> flightIdCompanyList; // не ліст обєктів, а ліст айдішок для обєкта (OneToMany)
+    private List<Integer> airPlaneIdList;
+    private List<Integer> flightIdCompanyList;
 
     public AirCompanyResponce(AirCompany airCompany) {
         this.id = airCompany.getId();
@@ -24,15 +25,14 @@ public class AirCompanyResponce {
         this.type = airCompany.getType();
         this.founded = airCompany.getFounded();
 
-        //    Додаткові поля для читання не з БД
         if (airCompany.getAirPlaneList() != null && !airCompany.getAirPlaneList().isEmpty()) {
             this.airPlaneIdList = airCompany.getAirPlaneList().stream()
-                    .map(plane -> plane.getId()) // приводимо до ліста айдішок обєкта
+                    .map(AirPlane::getId)
                     .collect(Collectors.toList());
         }
         if (airCompany.getFlightCompanyList() != null && !airCompany.getFlightCompanyList().isEmpty()) {
             this.flightIdCompanyList = airCompany.getFlightCompanyList().stream()
-                    .map(flight -> flight.getId()) // приводимо до ліста айдішок обєкта
+                    .map(Flight::getId)
                     .collect(Collectors.toList());
         }
     }

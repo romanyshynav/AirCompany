@@ -16,7 +16,7 @@ public class AirPlane {
     private String name;
     private String factorySerialNumber;
     @ManyToOne
-    private AirCompany airCompanyId; // todo мають бути айдішки а не обєкти
+    private AirCompany airCompanyId;
     private Integer numberOfFlights;
     private Integer flightDistance;
     private Integer fuelCapacity;
@@ -24,6 +24,6 @@ public class AirPlane {
     private LocalDate createdAt;
 
     @OneToMany(mappedBy = "airplaneId")
-    private List<Flight> flightPlaneList = new ArrayList<>(); // todo мають бути айдішки а не обєкти
+    private List<Flight> flightPlaneList = new ArrayList<>();
 
 }

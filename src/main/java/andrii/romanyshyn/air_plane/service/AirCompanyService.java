@@ -7,6 +7,7 @@ import andrii.romanyshyn.air_plane.repository.AirCompanyRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class AirCompanyService {
         AirCompany airCompany = new AirCompany();
         airCompany.setName(request.getName());
         airCompany.setType(request.getType());
-        airCompany.setFounded(request.getFounded());
+        airCompany.setFounded(LocalDate.now());
 
         return airCompanyRepository.save(airCompany);
     }
@@ -44,13 +45,9 @@ public class AirCompanyService {
         airCompanyRepository.delete(airCompany);
     }
 
-    public List<AirCompany> findAll1() {
-        return airCompanyRepository.findAll();
-    }
-
-    public List<AirCompanyResponce> findAll2() {
+    public List<AirCompanyResponce> findAll() {
         return airCompanyRepository.findAll().stream()
-                .map(airCompany -> new AirCompanyResponce(airCompany))
+                .map(AirCompanyResponce::new)
                 .collect(Collectors.toList());
     }
 

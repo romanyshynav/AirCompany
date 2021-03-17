@@ -8,6 +8,7 @@ import andrii.romanyshyn.air_plane.repository.AirPlaneRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,26 +26,23 @@ public class AirPlaneService {
 
     public AirPlaneResponce changeAirCompany(Integer id, Integer companyId) {
         AirPlane airPlane = findAirPlaneById(id);
-//        airPlane.setAirCompanyId(companyId);
         airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(companyId));
 
         airPlaneRepository.save(airPlane);
         return new AirPlaneResponce(airPlane);
     }
 
-
     // CRUD-Operations
     public AirPlaneResponce create(AirPlaneRequest request) {
         AirPlane airPlane = new AirPlane();
         airPlane.setName(request.getName());
         airPlane.setFactorySerialNumber(request.getFactorySerialNumber());
-//        airPlane.setAirCompanyId(request.getAirCompanyId());
         airPlane.setAirCompanyId(airCompanyService.findAirCompanyById(request.getAirCompanyId()));
         airPlane.setNumberOfFlights(request.getNumberOfFlights());
         airPlane.setFlightDistance(request.getFlightDistance());
         airPlane.setFuelCapacity(request.getFuelCapacity());
         airPlane.setType(request.getType());
-        airPlane.setCreatedAt(request.getCreatedAt());
+        airPlane.setCreatedAt(LocalDate.now());
 
         airPlaneRepository.save(airPlane);
 
@@ -53,7 +51,7 @@ public class AirPlaneService {
 
     public List<AirPlaneResponce> findAll() {
         return airPlaneRepository.findAll().stream()
-                .map(plane -> new AirPlaneResponce(plane))
+                .map(AirPlaneResponce::new)
                 .collect(Collectors.toList());
     }
 

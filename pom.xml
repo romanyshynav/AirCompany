@@ -31,7 +31,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--=========================================Залежності для Controller==========================================-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

@@ -1,6 +1,7 @@
 package andrii.romanyshyn.air_plane.dto.responce;
 
 import andrii.romanyshyn.air_plane.entity.AirPlane;
+import andrii.romanyshyn.air_plane.entity.Flight;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -18,9 +19,8 @@ public class AirPlaneResponce {
     private String type;
     private LocalDate createdAt;
 
-    //    Додаткові поля з БД
-    private Integer airCompanyId; // передається не обєкт, а айдішка для обєкта (ManyToOne)
-    private List<Integer> flightIdPlaneList; // не ліст обєктів, а ліст айдішок для обєкта (OneToMany)
+    private Integer airCompanyId;
+    private List<Integer> flightIdPlaneList;
 
     public AirPlaneResponce(AirPlane airPlane) {
         this.id = airPlane.getId();
@@ -32,15 +32,13 @@ public class AirPlaneResponce {
         this.type = airPlane.getType();
         this.createdAt = airPlane.getCreatedAt();
 
-        //    Додаткові поля з БД
         if (airPlane.getAirCompanyId() != null) {
             this.airCompanyId = airPlane.getAirCompanyId().getId();
         }
         if (airPlane.getFlightPlaneList() != null && !airPlane.getFlightPlaneList().isEmpty()) {
             this.flightIdPlaneList = airPlane.getFlightPlaneList().stream()
-                    .map(flight -> flight.getId()) // приводимо до ліста айдішок обєкта
+                    .map(Flight::getId)
                     .collect(Collectors.toList());
         }
     }
-
 }

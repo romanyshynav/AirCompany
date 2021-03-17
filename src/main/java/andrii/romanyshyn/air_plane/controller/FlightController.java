@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/flight")
+@RequestMapping("/flights")
 public class FlightController {
     private final FlightService flightService;
 
@@ -24,7 +24,12 @@ public class FlightController {
 
     @GetMapping("/findTask4")
     public List<FlightResponce> findFlightByActiveStatusMoreThan24Hours() {
-        return flightService.findFlightByActiveStatusMoreThan24Hours(FlightStatus.ACTIVE);
+        return flightService.findFlightByActiveStatusMoreThan24Hours();
+    }
+
+    @PutMapping("/{id}/{statusString}")
+    public FlightResponce changeFlightStatus(@PathVariable Integer id, @PathVariable String statusString) {
+        return flightService.changeFlightStatus(id, FlightStatus.valueOf(statusString));
     }
 
     // CRUD-Operations
